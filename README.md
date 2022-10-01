@@ -23,7 +23,7 @@ python -m pip install django==3.2
 ```django-admin.py startproject Cadastro_Leads_Proj```
 [X]  Subir o servidor e testar o projeto
 [X]entrar na pasta do projeto
-    - cd PersonalCheffProj
+    - cd Cadastro_Leads_Proj
 [X]  Executar o projeto no servidor
 ```python 
 `python manage.py runserver`
@@ -36,7 +36,7 @@ python -m pip install django==3.2
 `python manage.py startapp cadastro_leads`
 
 ```
-[X] Registrar o app receitas
+[X] Registrar o app cadastro_leads
     - no arquivo settings.py adicionar o app cadastro_leads na lista de apps 
 INSTALLED_APPS[
     ...
@@ -50,11 +50,38 @@ o	    from . import views
 o	
 o	    urlpatterns = [
 o	        path('', views.index, name='index')
-    ]
-•	  Criar a view para a rota inicial
-o	Dentro da pasta receitas(app) abrir o arquivo views.py
+[X]   Criar a view para a rota inicial
+o	Dentro da pasta cadasttro_leads (app) abrir o arquivo views.py
 •	    from django.shortcuts import render
 •	    from django.http import HttpResponse
 •	
 •	    def index(request):
         return HttpResponse("<h1>Seja bem vindo</h1>")
+
+[X]  Registrar a rota inicial
+o	Dentro da pasta Cadastro_leadsProj(app) abrir o arquivo urls.py
+•	from django.contrib import admin
+•	from django.urls import path, include
+•	
+•	urlpatterns = [
+•	    path('admin/', admin.site.urls),
+•	    path('',include('Cadastro_leads.urls')),
+
+[X]  Criar o arquivo index.html
+o	  Dentro da pasta cadastro_leads(app), crie a pasta templates
+o	Dentro da pasta templatescrie seus arquivos HTML começando pelo index.html
+o	No arquivo views.py que está dentro da pasta do app faça a seguinte alteração de código:
+•	from django.shortcuts import render
+•	
+•	def index(request):
+    return render(request,'index.html')
+
+[]  Integrar arquivos estáticos (CSS, JS, IMG)
+o	Dentro da pasta do projeto (Cadastro_leads_Proj), criar a pasta static
+o	Dentro da pasta static, colocar as imagens, os arquivos css e os arquivos js que for utilizar
+o	No arquivo settings.py:
+	realize a importação da biblioteca os através do comando import os
+	na linha ~58 adicione o caminho dos templates da seguinte forma:
+'DIRS': [os.path.join(BASE_DIR, 'cadastro_leads/templates')],
+	no final do arquivo, após a linha STATIC_URL insira o seguinte código:
+

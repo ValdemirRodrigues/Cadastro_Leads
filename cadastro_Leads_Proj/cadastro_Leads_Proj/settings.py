@@ -55,7 +55,7 @@ ROOT_URLCONF = 'cadastro_Leads_Proj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'cadastro_leads/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
